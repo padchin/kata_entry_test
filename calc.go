@@ -17,7 +17,7 @@ func main() {
 			log.Fatalf("error reading standard input: %v", err)
 		}
 		query = query[:len(query)-2]
-		a, b, operand, roman, err := validateQuery(query)
+		a, b, operator, roman, err := validateQuery(query)
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -25,7 +25,7 @@ func main() {
 			log.Fatal(ErrOutOfBounds)
 		}
 		if !roman {
-			switch operand {
+			switch operator {
 			case "+":
 				fmt.Println(a + b)
 			case "-":
@@ -36,7 +36,7 @@ func main() {
 				fmt.Println(a / b)
 			}
 		} else {
-			switch operand {
+			switch operator {
 			case "+":
 				fmt.Println(intToRoman(a + b))
 			case "-":
