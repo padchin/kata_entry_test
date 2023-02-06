@@ -7,6 +7,9 @@ import (
 )
 
 func validateQuery(query string) (operand1 int, operand2 int, operator string, roman bool, err error) {
+	if len(query) == 0 {
+		return 0, 0, "", false, ErrCommonFormat
+	}
 	//search for operator
 	seps := []string{"+", "-", "/", "*"}
 	found := false
