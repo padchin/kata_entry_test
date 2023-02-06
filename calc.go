@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strings"
 )
 
 func main() {
@@ -16,7 +17,11 @@ func main() {
 		if err != nil {
 			log.Fatalf("error reading standard input: %v", err)
 		}
-		query = query[:len(query)-2]
+		query = strings.Replace(query, " ", "", -1)
+		query = strings.Replace(query, "\t", "", -1)
+		query = strings.Replace(query, "\n", "", -1)
+		query = strings.Replace(query, "\r", "", -1)
+		query = strings.ToUpper(query)
 		a, b, operator, roman, err := validateQuery(query)
 		if err != nil {
 			log.Fatal(err)

@@ -7,9 +7,6 @@ import (
 )
 
 func validateQuery(query string) (operand1 int, operand2 int, operator string, roman bool, err error) {
-	// remove spaces
-	query = strings.Join(strings.Fields(query), "")
-	query = strings.ToUpper(query)
 	//search for operator
 	seps := []string{"+", "-", "/", "*"}
 	found := false
